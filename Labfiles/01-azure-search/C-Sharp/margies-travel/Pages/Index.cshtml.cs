@@ -50,11 +50,11 @@ namespace search_client.Pages
             // Submit search query
             var options = new SearchOptions{
                 IncludeTotalCount = true,
-                SearchMode = SearchMode.All,
-                Filter = FilterExpression,
-                OrderBy = {SortOrder},
+                SearchMode = SearchMode.All, // "all" mode requires all individual words to be included
+                Filter = FilterExpression, // refers to a custom filter expression in the `FilterExpression` variable
+                OrderBy = {SortOrder}, // refers to a custom sorting order
                 Facets = {"metadata_author"},
-                HighlightFields = {"merged_content-3","imageCaption-3"} 
+                HighlightFields = {"merged_content-3","imageCaption-3"} // up to three extracts of the merged_content and imageCaption fields with the search terms highlighted are included in the results.
             };
             options.Select.Add("url");
             options.Select.Add("metadata_storage_name");

@@ -26,12 +26,12 @@ def search_query(search_text, filter_by=None, sort_order=None):
 
         # Submit search query
         results =  search_client.search(search_text,
-                                        search_mode="all",
+                                        search_mode="all", # "all" mode requires all individual words to be included
                                         include_total_count=True,
-                                        filter=filter_by,
-                                        order_by=sort_order,
+                                        filter=filter_by, # refers to a custom filter expression
+                                        order_by=sort_order, # refers to a custom sorting order
                                         facets=['metadata_author'],
-                                        highlight_fields='merged_content-3,imageCaption-3',
+                                        highlight_fields='merged_content-3,imageCaption-3', # up to three extracts of the merged_content and imageCaption fields with the search terms highlighted are included in the results
                                         select = "url,metadata_storage_name,metadata_author,metadata_storage_size,metadata_storage_last_modified,language,sentiment,merged_content,keyphrases,locations,imageTags,imageCaption")
         return results
         
